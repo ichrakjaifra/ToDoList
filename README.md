@@ -1,16 +1,6 @@
 # TaskFlow
 
-TaskFlow est une application de gestion de tâches conçue pour aider les utilisateurs à créer, suivre et organiser leurs tâches, tout en simplifiant la planification des projets. Grâce à une interface moderne et conviviale, cette application permet d'améliorer l'efficacité de l'équipe de développement.
-
-## Table des matières
-- [Fonctionnalités](#fonctionnalités)
-- [Technologies utilisées](#technologies-utilisées)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Contribuer](#contribuer)
-- [Auteurs](#auteurs)
-- [Licence](#licence)
-
+TaskFlow est une application de gestion de tâches conçue pour aider les utilisateurs à créer, suivre et organiser leurs tâches, tout en simplifiant la planification des projets. Grâce à une interface moderne et conviviale.
 ## Fonctionnalités
 
 - **Création de Tâches** : Ajouter de nouvelles tâches avec un titre, une description, une date d'échéance et une priorité.
