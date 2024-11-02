@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-red-50">
+
+<main class="content-container pb-32 pt-16">
+    <!-- Header -->
+    <header class="max-w-7xl mx-auto flex items-center justify-between">
+        <h1 class="font-semibold text-2xl">My tasks</h1>
+        <button id="add-task-cta" class="bg-red-400 text-white border-2 border-black rounded-lg py-2 px-4 hover:bg-red-500">Add task</button>
+    </header>
+
+    <!-- Radio buttons for view options -->
+    <div class="border-t-2 border-b-2 border-black mt-4">
+        <div class="flex max-w-full">
+            <div class="w-24 border-l-2 border-black last:border-r-2">
+                <input type="radio" id="list" name="view-option" value="list" class="hidden peer" checked />
+                <label for="list" class="flex items-center justify-center gap-1 font-medium text-sm p-4 cursor-pointer peer-checked:bg-red-400">
+                    <i class="ri-list-check"></i>
+                    <span>List</span>
+                </label>
+            </div>
+            <div class="w-24 border-l-2 border-black last:border-r-2">
+                <input type="radio" id="board" name="view-option" value="board" class="hidden peer" />
+                <label for="board" class="flex items-center justify-center gap-1 font-medium text-sm p-4 cursor-pointer peer-checked:bg-red-400">
+                    <i class="ri-dashboard-fill"></i>
+                    <span>Board</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tasks Section -->
+    <section class="max-w-screen-lg mx-auto">
+        <!-- List view -->
+        <div id="list-view" class="list-view mt-8 grid grid-cols-3 gap-2">
+            <div class="task-category bg-white border-2 border-black rounded-lg shadow-md" data-category="todo">
+                <h2 class="flex items-center gap-2 p-4 border-b-2 border-black">
+                    <span class="circle bg-pink-500 w-4 h-4 rounded-full"></span>
+                    <span class="font-semibold text-lg">To do <span id="todo-count">0</span></span>
+                </h2>
+                <ul class="tasks-list"></ul>
+            </div>
+
+            <div class="task-category bg-white border-2 border-black rounded-lg shadow-md" data-category="doing">
+                <h2 class="flex items-center gap-2 p-4 border-b-2 border-black">
+                    <span class="circle bg-blue-500 w-4 h-4 rounded-full"></span>
+                    <span class="font-semibold text-lg">Doing <span id="doing-count">0</span></span>
+                </h2>
+                <ul class="tasks-list"></ul>
+            </div>
+
+            <div class="task-category bg-white border-2 border-black rounded-lg shadow-md" data-category="done">
+                <h2 class="flex items-center gap-2 p-4 border-b-2 border-black">
+                    <span class="circle bg-green-500 w-4 h-4 rounded-full"></span>
+                    <span class="font-semibold text-lg">Done <span id="done-count">0</span></span>
+                </h2>
+                <ul class="tasks-list"></ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add + Update Task Overlay -->
+    <div id="set-task-overlay" class="fixed inset-0 z-50 bg-beige flex items-center justify-center p-8 overflow-y-auto hidden">
+        <div class="relative max-w-md w-full p-8 border-2 border-black rounded-lg bg-red-400">
+            <!-- Close Button -->
+            <button onclick="hideOverlay()" class="absolute top-0 right-0 transform -translate-y-4 translate-x-4 w-8 h-8 flex items-center justify-center bg-blue rounded-full">
+                <iconify-icon icon="material-symbols:close-rounded" style="color: black" width="26" height="26"></iconify-icon>
+            </button>
+            <h1 class="text-2xl font-semibold">Add Task</h1>
+            <form id="taskForm" class="space-y-4 mt-4" autocomplete="off">
+                <!-- Task Name -->
+                <label for="name" class="block text-sm font-medium">Name</label>
+                <input type="text" name="name" id="name" class="w-full px-3 py-2 bg-white border rounded-md" required />
+                
+                <!-- Task Description -->
+                <label for="description" class="block text-sm font-medium">Description</label>
+                <textarea name="description" id="description" rows="4" class="w-full px-3 py-2 bg-white border rounded-md" required></textarea>
+                
+                <!-- Due Date -->
+                <h2 class="text-sm font-medium">Due Date</h2>
+                <input type="date" id="due-date" class="w-full px-3 py-2 bg-white border rounded-md" required />
+
+                <!-- Task Status -->
+                <label for="status" class="block text-sm font-medium">Status</label>
+                <select id="status" class="w-full px-3 py-2 bg-white border rounded-md">
+                    <option value="To do">To do</option>
+                    <option value="Doing">Doing</option>
+                    <option value="Done">Done</option>
+                </select>
+
+                <!-- Task Priority -->
+                <label for="Priority" class="block text-sm font-medium">Priority</label>
+                <select id="Priority" class="w-full px-3 py-2 bg-white border rounded-md">
+                    <option value="P1">P1</option>
+                    <option value="P2">P2</option>
+                    <option value="P3">P3</option>
+                </select>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-md">Add Task</button>
+                    <button type="button" onclick="hideOverlay()" class="px-4 py-2 text-black bg-slate-300 rounded-md">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
