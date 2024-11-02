@@ -1,4 +1,4 @@
-# ToDoList
+# TaskFlow
 
 TaskFlow est une application de gestion de tâches conçue pour aider les utilisateurs à créer, suivre et organiser leurs tâches, tout en simplifiant la planification des projets. Grâce à une interface moderne et conviviale, cette application permet d'améliorer l'efficacité de l'équipe de développement.
 
@@ -34,4 +34,4 @@ TaskFlow est une application de gestion de tâches conçue pour aider les utilis
 
 1. Clonez le dépôt :
    ```bash
-   git clone https://github.com/username/taskflow.git
+   git clone https://github.com/ichrakjaifra/ToDoList.git
