@@ -15,7 +15,6 @@ TaskFlow est une application de gestion de tâches conçue pour aider les utilis
 ## Technologies utilisées
 
 - **HTML5** : Pour la structure de la page.
-- **CSS3** : Pour le style de la page.
 - **Tailwind CSS** : Pour un design moderne et réactif.
 - **JavaScript** : Pour la gestion dynamique des tâches.
 - **Local Storage** : Pour le stockage des tâches.
