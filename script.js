@@ -11,10 +11,24 @@ function hideOverlay() {
 }
 // Fonction pour mettre à jour les statistiques des tâches
 function updateStatistics() {
-    document.getElementById("todo-count").textContent = tasks.filter(task => task.status === "To do").length;
-    document.getElementById("doing-count").textContent = tasks.filter(task => task.status === "Doing").length;
-    document.getElementById("done-count").textContent = tasks.filter(task => task.status === "Done").length;
+  let todoCount = 0;
+  let doingCount = 0;
+  let doneCount = 0;
+
+  for (const task of tasks) {
+      if (task.status === "To do") {
+          todoCount++;
+      } else if (task.status === "Doing") {
+          doingCount++;
+      } else if (task.status === "Done") {
+          doneCount++;
+      }
+  }
+  document.getElementById("todo-count").textContent = todoCount;
+  document.getElementById("doing-count").textContent = doingCount;
+  document.getElementById("done-count").textContent = doneCount;
 }
+
 // Afficher les tâches dans la liste organisée
 function displayTasks() {
     const taskLists = {
