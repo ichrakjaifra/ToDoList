@@ -14,22 +14,22 @@
 
 <main class="content-container pb-32 pt-16">
     <!-- Header -->
-    <header class="max-w-7xl mx-auto flex items-center justify-between">
+    <header class="max-w-7xl mx-auto px-4 flex items-center justify-between">
         <h1 class="font-semibold text-2xl">My tasks</h1>
         <button id="add-task-cta" class="bg-red-400 text-white border-2 border-black rounded-lg py-2 px-4 hover:bg-red-500">Add task</button>
     </header>
 
     <!-- Radio buttons for view options -->
     <div class="border-t-2 border-b-2 border-black mt-4">
-        <div class="flex max-w-full">
-            <div class="w-24 border-l-2 border-black last:border-r-2">
+        <div class="flex max-w-full px-4">
+            <div class="w-1/2 sm:w-24 border-l-2 border-black last:border-r-2">
                 <input type="radio" id="list" name="view-option" value="list" class="hidden peer" checked />
                 <label for="list" class="flex items-center justify-center gap-1 font-medium text-sm p-4 cursor-pointer peer-checked:bg-red-400">
                     <i class="ri-list-check"></i>
                     <span>List</span>
                 </label>
             </div>
-            <div class="w-24 border-l-2 border-black last:border-r-2">
+            <div class="w-1/2 sm:w-24 border-l-2 border-black last:border-r-2">
                 <input type="radio" id="board" name="view-option" value="board" class="hidden peer" />
                 <label for="board" class="flex items-center justify-center gap-1 font-medium text-sm p-4 cursor-pointer peer-checked:bg-red-400">
                     <i class="ri-dashboard-fill"></i>
@@ -40,9 +40,9 @@
     </div>
 
     <!-- Tasks Section -->
-    <section class="max-w-screen-lg mx-auto">
+    <section class="max-w-screen-lg mx-auto px-4 mt-8">
         <!-- List view -->
-        <div id="list-view" class="list-view mt-8 grid grid-cols-3 gap-2">
+        <div id="list-view" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div class="task-category bg-white border-2 border-black rounded-lg shadow-md" data-category="todo">
                 <h2 class="flex items-center gap-2 p-4 border-b-2 border-black">
                     <span class="circle bg-pink-500 w-4 h-4 rounded-full"></span>
@@ -70,13 +70,13 @@
     </section>
 
     <!-- Add + Update Task Overlay -->
-    <div id="set-task-overlay" class="fixed inset-0 z-50 bg-beige flex items-center justify-center p-8 overflow-y-auto hidden">
-        <div class="relative max-w-md w-full p-8 border-2 border-black rounded-lg bg-red-400">
+    <div id="set-task-overlay" class="fixed inset-0 z-50 bg-beige flex items-center justify-center p-4 sm:p-8 overflow-y-auto hidden">
+        <div class="relative max-w-sm sm:max-w-md w-full p-6 sm:p-8 border-2 border-black rounded-lg bg-red-400">
             <!-- Close Button -->
             <button onclick="hideOverlay()" class="absolute top-0 right-0 transform -translate-y-4 translate-x-4 w-8 h-8 flex items-center justify-center bg-blue rounded-full">
                 <iconify-icon icon="material-symbols:close-rounded" style="color: black" width="26" height="26"></iconify-icon>
             </button>
-            <h1 class="text-2xl font-semibold">Add Task</h1>
+            <h1 class="text-xl sm:text-2xl font-semibold">Add Task</h1>
             <form id="taskForm" class="space-y-4 mt-4" autocomplete="off">
                 <!-- Task Name -->
                 <label for="name" class="block text-sm font-medium">Name</label>
